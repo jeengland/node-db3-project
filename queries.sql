@@ -32,3 +32,13 @@ JOIN Customer AS c
 ON o.CustomerId = c.Id
 JOIN Employee AS e 
 ON o.EmployeeId = e.Id;
+
+-- STRETCH ONE --
+
+SELECT c.CategoryName, (SELECT COUNT(CategoryId) FROM Products WHERE CategoryId = c.CategoryId) AS 'Count'
+FROM Categories as c;
+
+-- STRETCH TWO --
+
+SELECT o.OrderID, (SELECT COUNT(ProductID) FROM OrderDetails WHERE OrderID = o.OrderID) as 'ItemCount'
+FROM Orders as o;
